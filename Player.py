@@ -1,6 +1,6 @@
 from hand import Hand
 
-#  TODO Refactor this into an extendable class to be used for player and
+#  TODO Refactor this into an extendable class to be used for player and dealer
 class Player:
 
     def __init__(self):
