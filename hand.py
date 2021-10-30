@@ -16,6 +16,17 @@ class Hand():
             hand.append(self.deck_obj.get_random_card(deck))
         return hand
 
+    def is_split_avail(self, hand):
+        seen = []
+        for card in hand:
+            val = card[0][0]
+            if val not in seen:
+                seen.append(val)
+            else:
+                if val in seen:
+                    return True
+        return False
+
     def get_hand_from_top_of_deck(self, deck, hand_size):
         hand = []
         for x in range(hand_size):
