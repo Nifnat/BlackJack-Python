@@ -6,7 +6,13 @@ class Player:
     def __init__(self):
         self.chips = 0
         self.hand = []
+        self.split_hand = []
         self.id = ""
+        self.last_bet = 0
+
+    def set_last_bet(self, count):
+        self.last_bet = count
+        return self.last_bet
 
     def set_chips(self, count):
         self.chips = count
