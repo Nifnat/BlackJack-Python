@@ -34,6 +34,23 @@ class Player:
     def get_hand(self):
         return self.hand
 
+    def print_split_hand(self):
+        print(self.split_hand)
+
+    def set_split_hand(self, split_hand):
+        self.split_hand = split_hand
+        return self.split_hand
+
+    def get_split_hand(self):
+        return self.split_hand
+
+    def print_hands(self):
+        joined_hand = []
+        hand = self.hand.copy()
+        hand.extend(self.split_hand)
+        joined_hand.append(hand)
+        print(joined_hand)
+
     def print_hand(self):
         print(self.hand)
 
@@ -44,5 +61,38 @@ class Player:
     def get_id(self):
         return self.id
 
-    def add_cards_to_hand_from_deck(self, deck, cards_to_add):
-        self.hand.append(Hand().get_hand_from_top_of_deck(deck, cards_to_add))
+    def is_split_avail(self):
+        return Hand().is_split_avail(self.hand)
+
+    def add_cards_to_hand_from_deck(self, deck, hand_size):
+        self.hand.append(Hand().get_hand_from_top_of_deck(deck, hand_size))
+
+    def add_cards_to_split_hand_from_deck(self, deck, hand_size):
+        self.split_hand.append(Hand().get_hand_from_top_of_deck(deck, hand_size))
+
+    def init_split_hand(self):
+        self.split_hand.append(self.hand.pop(1))
+
+    def is_bust(self):
+        total = 0
+        for card in self.hand:
+            total = total + card[0][2]
+        if total > 21:
+            return True
+        else:
+            return False
+
+    def is_21(self):
+        total = 0
+        for card in self.hand:
+            total = total + card[0][2]
+        if total == 21:
+            return True
+        else:
+            return False
+
+    def get_total_of_hand(self):
+        Hand().get_total_of_hand_ace_highest_if_possible(self.hand)
+
+    def get_total_of_split_hand(self):
+        Hand().get_total_of_hand_ace_highest_if_possible(self.split_hand)
