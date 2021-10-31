@@ -11,8 +11,8 @@ class Dealer:
         self.id = ""
 
     def set_hand(self, hand):
-        self.hand = hand
-        return self.hand
+        self.dealers_hand = hand
+        return self.dealers_hand
 
     def get_hand(self):
         return self.dealers_hand
